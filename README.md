@@ -88,6 +88,8 @@ $ docker build . -t ubuntu-ansible
 
 ### Creating docker-compose.yml file 
 
+We will use the `ubuntu-ansible` image as the base for our front-end web servers. We'll create two servers in this example but it could easily be expaded to include many more. 
+
 ```Dockerfile
 version: '2'
 services:
