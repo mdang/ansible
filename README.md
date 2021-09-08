@@ -212,4 +212,10 @@ We will now create a new file called **site.yml**
       become: yes
 ```
 
+### Run the playbook 
+
+```
+$ ansible-playbook site.yml
+```
+
 [SCREENSHOT Ansible running] 
