@@ -81,10 +81,27 @@ EXPOSE 22 5000
 CMD ["/usr/sbin/sshd", "-D"]
 ```
  
-Build our Docker image and tag it as `ubuntu-ansible` for user later 
+Build our Docker image and tag it as `ubuntu-ansible` for use later 
 ```
 $ docker build . -t ubuntu-ansible
 ```
 
+### Creating docker-compose.yml file 
 
+```Dockerfile
+version: '2'
+services:
+  fe1.dev:
+    image: ubuntu-ansible
+    hostname: fe1.dev
+    ports:
+      - "2224:22"
+      - "8081:80"
+  fe2.dev:
+    image: ubuntu-ansible
+    hostname: fe2.dev
+    ports:
+      - "2225:22"
+      - "8082:80"
+```
 
