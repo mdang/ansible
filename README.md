@@ -1,8 +1,16 @@
 # Infrastructure as Code 
 
-## Intro
+Intro to what IaC is
 
-## What is Ansible? 
+## Ansible
+
+How does Ansible fit into world of IaC
+
+## How it Works
 
 ### Ansible Playbooks
+
+## Code-along
+
+### Set up SSH 
 
