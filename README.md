@@ -198,18 +198,16 @@ We will now create a new file called **site.yml**
   become: yes
 
   tasks:
-    - name: ensure Nginx is at the latest version
+    - name: install the latest version of Nginx
       apt: name=nginx state=latest
-      become: yes
-    - name: Copy index page
+    - name: copy the HTML page to the server
       template:
-        src: ./html/index.html
+        src: ./frontend/index.html
         dest: /var/www/html/index.html
     - name: start nginx
       service:
         name: nginx
         state: started
-      become: yes
 ```
 
 ### Run the playbook 
