@@ -154,4 +154,38 @@ Host fe2.dev
     Port 2225
 ```
 
+### ansible.cfg
+
+The Ansible configuration file 
+
+```
+[defaults]
+# Default location of the inventory file that Ansible will use to determine what hosts it can talk to
+inventory = inventory
+
+# Specify here the remote hosts so we do not need to configure them in main ssh config
+[ssh_connection]
+transport = ssh
+ssh_args = -F ssh.config
+```
+
+### Test the configuration 
+
+Test the servers with the following command in the terminal: 
+```
+$ ansible all -m ping
+```
+
+You should get a response similar to the following 
+```
+fe1.dev | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+fe2.dev | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+```
+
 
