@@ -320,4 +320,42 @@ Host be1.dev
     Port 2226
 ```
 
+Modify the Ansible playbook to include tasks for installing Flask on the backend server and copying the modified HTML file that makes an AJAX request. 
 
+```
+- hosts: frontend
+  remote_user: root
+  become: yes
+
+  tasks:
+    - name: install the latest version of Nginx
+      apt: name=nginx state=latest
+    - name: copy the HTML page to the server
+      template:
+        src: ./frontend/ajax.html
+        dest: /var/www/html/index.html
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+
+- hosts: backend
+  remote_user: root
+  become: yes
+
+  tasks:
+    - name: install Flask
+      pip: name=flask
+    - name: copy the app to new server 
+      template:
+        src: ./backend/app.py
+        dest: /var/opt/app.py
+    - name: start Flask
+      shell: "FLASK_APP=/var/www/app.py flask run --host=0.0.0.0"
+```
+
+Run the playbook again
+
+```
+$ ansible-playbook site.yml
+```
