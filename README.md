@@ -44,8 +44,7 @@ $ ssh-keygen
 
 A requirement of Ansible is Python, we'll also want to enable SSH as well to connect to our Docker containers. 
 
-```
-# Dockerfile
+```Dockerfile
 FROM ubuntu:latest
 RUN apt-get update && \
     apt-get install -y openssh-server pwgen netcat net-tools curl wget && \
