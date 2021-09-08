@@ -212,3 +212,4 @@ We will now create a new file called **site.yml**
       become: yes
 ```
 
+[SCREENSHOT Ansible running] 
