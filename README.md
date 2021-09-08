@@ -242,4 +242,82 @@ Let's access these url's in our browser, you should see we have two front-end we
 
 How cool is that??
 
+## You Do: Add a Back-end Flask Server
+
+With a few changes, we will be able to add a Python API using Flask! 
+
+Update **docker-compose.yml** to include the web server. Flask runs by default on port 5000, we'll map that port on the container to port `8083` on our machine. We'll be using the same base image from before since it already has support for Python. 
+
+```Docker
+version: '2'
+services:
+  fe1.dev:
+    image: ubuntu-ansible
+    hostname: fe1.dev
+    ports:
+      - "2224:22"
+      - "8081:80"
+  fe2.dev:
+    image: ubuntu-ansible
+    hostname: fe2.dev
+    ports:
+      - "2225:22"
+      - "8082:80"
+  be1.dev:
+    image: ubuntu-ansible
+    hostname: be1.dev
+    ports:
+      - "2226:22"
+      - "8083:5000"
+```
+
+Now run the compose file to bring up our backend container. 
+
+```
+$ docker-compose up -d
+```
+
+Update the **inventory** file to include the back-end server
+
+```
+[frontend]
+fe1.dev
+fe2.dev
+
+[frontend:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[backend]
+be1.dev
+
+[backend:vars]
+ansible_python_interpreter=/usr/bin/python3
+```
+
+Update the ssh.config file 
+
+```
+Host *
+    #disable host key checking: avoid asking for the keyprint authenticity
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    #enable hashing known_host file
+    HashKnownHosts yes
+    #IdentityFile allows to specify exactly which private key I wish to use for authentification
+    IdentityFile ./ansible_rsa
+
+Host fe1.dev
+    HostName localhost
+    User root
+    Port 2224
+Host fe2.dev
+    HostName localhost
+    User root
+    Port 2225
+Host be1.dev
+    HostName localhost
+    User root
+    Port 2226
+```
+
 
