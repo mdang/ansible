@@ -81,6 +81,10 @@ EXPOSE 22 5000
 CMD ["/usr/sbin/sshd", "-D"]
 ```
  
+Build our Docker image and tag it as `ubuntu-ansible` for user later 
+```
+$ docker build . -t ubuntu-ansible
+```
 
 
 
