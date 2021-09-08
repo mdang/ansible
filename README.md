@@ -31,12 +31,12 @@ In this demo, we'll set up multiple front-end servers running Nginx using Docker
 
 In order to be able to SSH into our containers we'll set up some SSH keys for this application. The following command will generate both the public (id_rsa.pub) and private part (id_rsa) of the key. 
 
-**Note** When prompted to enter the filename you can just hit enter. You can also leave the passphrase empty also when prompted as this is only for demo purposes.
-
 ```
 $ mkdir webapp && cd webapp
 $ ssh-keygen
 ```
+**Note** When prompted to enter the filename enter `ansible_rsa` to avoid overwriting any SSH keys you might already have set up. You can also leave the passphrase empty also when prompted as this is only for demo purposes.
+
 
  
 
