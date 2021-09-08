@@ -125,7 +125,7 @@ If you open Docker Desktop, you should see the following two containers running.
 TBD what is it used for 
 
 ```inventory
-[fe-servers]
+[frontend]
 fe1.dev
 fe2.dev
 ```
