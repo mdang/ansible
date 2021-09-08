@@ -16,7 +16,7 @@ YAML based
 
 ## Installing Ansible 
 
-[!https://docs.ansible.com/ansible/2.5/installation_guide/intro_installation.html#latest-releases-via-pip](Instructions)
+[Instructions](!https://docs.ansible.com/ansible/2.5/installation_guide/intro_installation.html#latest-releases-via-pip)
 
 ## Code-along
 
