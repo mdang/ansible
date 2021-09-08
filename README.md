@@ -364,3 +364,9 @@ Run the playbook again
 ```
 $ ansible-playbook site.yml
 ```
+
+Finally, let's test our frontend websites again to make sure they're now pulling data from our Flask API (http://localhost:8083) by going to:
+- http://localhost:8081
+- http://localhost:8082
+
+[SCREENSHOT FINAL RESULT]
