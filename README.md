@@ -219,3 +219,29 @@ $ ansible-playbook site.yml
 ```
 
 [SCREENSHOT Ansible running] 
+
+### Confirming the changes 
+
+Go back to Docker Desktop and hover over one of the front-end servers. Click on the second button for the CLI
+
+[SCRENSHOOT DOCKER DESKTOP CLI HIGHLIGHTED]
+
+Now `cd` into the destination directory specified in our playbook: `/var/www/html`. We should see the index.html file copied over for this and the other front-end server. 
+
+```
+$ cd /var/www/html/
+$ ls
+$ cat index.html
+```
+
+Now if you remember in our docker-compose.yml file, we mapped the ports from our containers to our machine, specifically ports `8081` and `8082`. 
+
+Let's access these url's in our browser, you should see we have two front-end websites now served by Nginx! 
+
+[SCREENSHOT localhost:8081]
+
+[SCREENSHOT localhost:8082]
+
+How cool is that??
+
+
