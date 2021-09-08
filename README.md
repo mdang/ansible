@@ -188,4 +188,27 @@ fe2.dev | SUCCESS => {
 }
 ```
 
+## Creating the Ansible Playbook 
+
+We will now create a new file called **site.yml**
+
+```
+- hosts: frontend
+  remote_user: root
+  become: yes
+
+  tasks:
+    - name: ensure Nginx is at the latest version
+      apt: name=nginx state=latest
+      become: yes
+    - name: Copy index page
+      template:
+        src: ./html/index.html
+        dest: /var/www/html/index.html
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+      become: yes
+```
 
