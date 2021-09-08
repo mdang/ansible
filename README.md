@@ -346,12 +346,17 @@ Modify the Ansible playbook to include tasks for installing Flask on the backend
   tasks:
     - name: install Flask
       pip: name=flask
+    - name: install flask_cors
+      become: true
+      pip:
+        name: flask_cors
+        state: present
     - name: copy the app to new server 
       template:
         src: ./backend/app.py
         dest: /var/opt/app.py
     - name: start Flask
-      shell: "FLASK_APP=/var/www/app.py flask run --host=0.0.0.0"
+      shell: "FLASK_APP=/var/opt/app.py flask run --host=0.0.0.0"
 ```
 
 Run the playbook again
