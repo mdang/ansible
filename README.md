@@ -23,7 +23,7 @@ $ sudo easy_install pip
 $ sudo pip install ansible
 ```
 
-## Code-along
+## Setting up Docker
 
 In this demo, we'll set up multiple front-end servers running Nginx using Docker containers. In case you aren't familiar, Nginx is a free, open-source and high-performance HTTP server that's popular for serving static websites. 
 
@@ -31,7 +31,7 @@ In this demo, we'll set up multiple front-end servers running Nginx using Docker
 
 Clone this repo and `cd` into it
 
-### Set up SSH 
+### Enable SSH access
 
 In order to be able to SSH into our containers we'll set up some SSH keys for this application. The following command will generate both the public (id_rsa.pub) and private part (id_rsa) of the key. 
 
@@ -106,4 +106,52 @@ services:
       - "2225:22"
       - "8082:80"
 ```
+
+Now let's start our Docker containers: 
+
+```
+$ docker-compose up -d
+```
+[SCREENSHOT TERMINAL WITH TWO SERVERS UP]
+
+If you open Docker Desktop, you should see the following two containers running. 
+
+[SCREENSHOT DOCKER DESKTOP]
+
+## Setting up Ansible
+
+### Inventory file
+
+TBD what is it used for 
+
+```inventory
+[fe-servers]
+fe1.dev
+fe2.dev
+```
+
+### ssh.config
+
+If not present, Ansible will use the globah ssh configuration on your machine. 
+
+```
+Host *
+    #disable host key checking: avoid asking for the keyprint authenticity
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    #enable hashing known_host file
+    HashKnownHosts yes
+    #IdentityFile allows to specify exactly which private key I wish to use for authentification
+    IdentityFile ./ansible_rsa
+
+Host fe1.dev
+    HostName localhost
+    User root
+    Port 2224
+Host fe2.dev
+    HostName localhost
+    User root
+    Port 2225
+```
+
 
