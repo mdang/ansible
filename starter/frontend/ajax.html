@@ -1,0 +1,28 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Tech Courses at General Assembly</h1>
+    <ul id="courses"></ul>
+
+    <script>
+      const url = 'http://localhost:8083/courses';
+
+      fetch(url)
+        .then(response => response.json())
+        .then(courses => {
+          const coursesList = courses.map(course => course.name);
+          console.log(coursesList);
+
+          const coursesContainer = document.getElementById('courses');
+          coursesList.forEach(course => {
+            let li = document.createElement('li');
+            li.innerText = course;
+            coursesContainer.appendChild(li);
+          })
+          
+        })
+      .catch(err => console.log(err))
+
+    </script>
+  </body>
+</html>
