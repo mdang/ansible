@@ -1,1 +1,12 @@
+[frontend]
+fe1.dev
+fe2.dev
 
+[frontend:vars]
+ansible_python_interpreter=/usr/bin/python3
+
+[backend]
+be1.dev
+
+[backend:vars]
+ansible_python_interpreter=/usr/bin/python3

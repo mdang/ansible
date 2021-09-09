@@ -1,1 +1,20 @@
-# docker-compose.yml
+version: '2'
+services:
+  fe1.dev:
+    image: ubuntu-ansible
+    hostname: fe1.dev
+    ports:
+      - "2224:22"
+      - "8081:80"
+  fe2.dev:
+    image: ubuntu-ansible
+    hostname: fe2.dev
+    ports:
+      - "2225:22"
+      - "8082:80"
+  be1.dev:
+    image: ubuntu-ansible
+    hostname: be1.dev
+    ports:
+      - "2226:22"
+      - "8083:5000"

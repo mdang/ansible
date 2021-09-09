@@ -1,1 +1,34 @@
-# Ansible playbook
+- hosts: frontend
+  remote_user: root
+  become: yes
+
+  tasks:
+    - name: install the latest version of Nginx
+      apt: name=nginx state=latest
+    - name: copy the HTML page to the server
+      template:
+        src: ./frontend/ajax.html
+        dest: /var/www/html/index.html
+    - name: start nginx
+      service:
+        name: nginx
+        state: started
+
+- hosts: backend
+  remote_user: root
+  become: yes
+
+  tasks:
+    - name: install Flask
+      pip: name=flask
+    - name: install flask_cors
+      become: true
+      pip:
+        name: flask_cors
+        state: present
+    - name: copy the app to new server 
+      template:
+        src: ./backend/app.py
+        dest: /var/opt/app.py
+    - name: start Flask
+      shell: "FLASK_APP=/var/opt/app.py flask run --host=0.0.0.0"
