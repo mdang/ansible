@@ -113,7 +113,7 @@ Now let's start our Docker containers:
 $ docker-compose up -d
 ```
 
-![](1.png)
+<img src="assets/1.png" width="500" />
 
 If you open Docker Desktop, you should see the following two containers running. 
 
