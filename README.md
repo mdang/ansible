@@ -112,11 +112,12 @@ Now let's start our Docker containers:
 ```
 $ docker-compose up -d
 ```
-[SCREENSHOT TERMINAL WITH TWO SERVERS UP]
+
+![](./assets/1.png)
 
 If you open Docker Desktop, you should see the following two containers running. 
 
-[SCREENSHOT DOCKER DESKTOP]
+![](./assets/2.png)
 
 ## Setting up Ansible
 
@@ -216,13 +217,13 @@ We will now create a new file called **site.yml**
 $ ansible-playbook site.yml
 ```
 
-[SCREENSHOT Ansible running] 
+![](./assets/4.png)
 
 ### Confirming the changes 
 
 Go back to Docker Desktop and hover over one of the front-end servers. Click on the second button for the CLI
 
-[SCRENSHOOT DOCKER DESKTOP CLI HIGHLIGHTED]
+![](./assets/5.png)
 
 Now `cd` into the destination directory specified in our playbook: `/var/www/html`. We should see the index.html file copied over for this and the other front-end server. 
 
@@ -236,9 +237,9 @@ Now if you remember in our docker-compose.yml file, we mapped the ports from our
 
 Let's access these url's in our browser, you should see we have two front-end websites now served by Nginx! 
 
-[SCREENSHOT localhost:8081]
+![](./assets/6.png)
 
-[SCREENSHOT localhost:8082]
+![](./assets/7.png)
 
 How cool is that??
 
@@ -369,4 +370,4 @@ Finally, let's test our frontend websites again to make sure they're now pulling
 - http://localhost:8081
 - http://localhost:8082
 
-[SCREENSHOT FINAL RESULT]
+![](./assets/8.png)
