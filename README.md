@@ -114,6 +114,7 @@ $ docker-compose up -d
 ```
 
 <img src="https://raw.githubusercontent.com/mdang/ansible/main/assets/1.png" width="500" />
+![](assets/2.png)
 
 If you open Docker Desktop, you should see the following two containers running. 
 
