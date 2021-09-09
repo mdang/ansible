@@ -113,7 +113,7 @@ Now let's start our Docker containers:
 $ docker-compose up -d
 ```
 
-![1](assets/1.png)
+![./assets/1.png](./assets/1.png)
 
 If you open Docker Desktop, you should see the following two containers running. 
 
